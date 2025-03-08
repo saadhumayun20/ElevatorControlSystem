@@ -47,6 +47,7 @@ void Elevator::openDoor() {
     connect(closeTimer, &QTimer::timeout, this, [this, closeTimer]() {
         if (!door.isOpen()) return;
         closeDoor();
+        closeTimer->deleteLater();
     });
     closeTimer->start(10000);
 }
